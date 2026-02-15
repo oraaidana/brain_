@@ -18,7 +18,7 @@ from nilearn import plotting
 from PIL import Image
 
 # --- 1. DATABASE CONFIGURATION ---
-DATABASE_URL = "mysql+pymysql://root:password@localhost:3306/careon"
+DATABASE_URL = DATABASE_URL = "mysql+pymysql://avnadmin:AVNS_3yPXZnCr3LR2e7jo0ps@mysql-1fd02b41-careon.a.aivencloud.com:26047/defaultdb"
 engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()
