@@ -10,7 +10,7 @@ import {
   Legend,
   ResponsiveContainer
 } from 'recharts';
-
+const API_BASE_URL = "https://careon-r10p.onrender.com"
 // --- Chart Component ---
 const RiskTrendChart = ({ data }) => {
   if (!data) return null;
@@ -111,7 +111,7 @@ const goToMain = () => setStep('upload');
   // Function to fetch and go to History (Account Page)
   const goToAccount = async () => {
     try {
-      const response = await fetch(`http://127.0.0.1:8000/history/${userData.email}`);
+      const response = await fetch(`${API_BASE_URL}/history/${userData.email}`);
       const data = await response.json();
       setPatientHistory(data);
       setStep('history');
@@ -122,7 +122,7 @@ const goToMain = () => setStep('upload');
   const fetchHistory = async () => {
     try {
       // Assuming you create a @app.get("/history/{email}") in FastAPI
-      const response = await fetch(`http://127.0.0.1:8000/history/${userData.email}`);
+      const response = await fetch(`${API_BASE_URL}/history/${userData.email}`);
       const data = await response.json();
       setPatientHistory(data);
       setStep('history');
@@ -138,7 +138,7 @@ const handleRegister = async () => {
     formData.append('password', userData.password);
 
     try {
-      const response = await fetch('http://127.0.0.1:8000/register', {
+      const response = await fetch(`${API_BASE_URL}/register`, {
         method: 'POST',
         body: formData,
       });
@@ -169,7 +169,7 @@ const handleRegister = async () => {
     if (diagnosticFiles.mri_current) formData.append('mri_current', diagnosticFiles.mri_current);
 
     try {
-      const response = await fetch('http://127.0.0.1:8000/analyze', {
+      const response = await fetch(`${API_BASE_URL}/analyze`, {
         method: 'POST',
         body: formData,
       });
